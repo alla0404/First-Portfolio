@@ -1,13 +1,12 @@
 import { useCreateBlockNote } from "@blocknote/react";
 // Or, you can use ariakit, shadcn, etc.
 import { BlockNoteView } from "@blocknote/mantine";
-// import { ko } from "@blocknote/core/locales";
-// Default styles for the mantine editor
 import "@blocknote/mantine/style.css";
 // Include the included Inter font
 import "@blocknote/core/fonts/inter.css";
 import type { Block } from "@blocknote/core";
 import { useEffect } from "react";
+import { ko } from "node_modules/@blocknote/core/types/src/i18n/locales";
 
 interface Props {
   props: Block[];

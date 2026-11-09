@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
@@ -11,13 +12,9 @@ export default defineConfig({
     },
   },
   build: {
-    // Rolldown/Rollup 경고를 무시하고 빌드가 중단되지 않도록 설정
+    // 롤다운 관련 복잡한 건 싹 지우고, 표준 rollupOptions만 사용합니다!
     rollupOptions: {
       external: [],
-      onwarn() {
-        // 번들링 관련 경고를 에러로 전환시키지 않고 무시합니다.
-        return;
-      },
     },
     commonjsOptions: {
       strictRequires: false,

@@ -28,6 +28,11 @@ export default function Authcallback() {
             .eq("id", user.id)
             .single();
 
+          if (selectError) {
+            console.error("USER 테이블 조회 중 에러가 발생하였습니다.");
+            return;
+          }
+
           if (!existing) {
             const { error: insertError } = await supabase.from("user").insert([
               {

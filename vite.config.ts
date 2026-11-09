@@ -11,16 +11,4 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  build: {
-    rollupOptions: {
-      external: [],
-    },
-    // 👇 이 부분을 추가해 주세요! (Rolldown 전용 외부 모듈 처리)
-    rolldownOptions: {
-      external: [],
-    },
-    commonjsOptions: {
-      strictRequires: false,
-    },
-  },
 });

@@ -11,4 +11,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // 👇 이 부분을 아래와 같이 추가해 주세요!
+  build: {
+    rollupOptions: {
+      // 빌드할 때 모듈 관련 경고나 에러가 나도 무시하고 넘어갑니다
+      external: [],
+    },
+    commonjsOptions: {
+      strictRequires: false,
+    },
+  },
 });

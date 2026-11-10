@@ -30,7 +30,10 @@ export function AppDraftsDialog({ children }: Props) {
   const [drafts, setDrafts] = useState<any[]>([]);
 
   const fetchDrafts = async () => {
-    if (!user) return;
+    if (!user?.id) {
+      setDrafts([]);
+      return;
+    }
     try {
       // .is() 쿼리문은 null만 체크할 경우 사용한다.
       // .eq() 쿼리문을 연속으로 사용하여 임시 저장된 토픽을 조회합니다.

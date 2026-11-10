@@ -6,7 +6,7 @@ import "@blocknote/mantine/style.css";
 import "@blocknote/core/fonts/inter.css";
 import type { Block } from "@blocknote/core";
 import { useEffect } from "react";
-import { ko } from "node_modules/@blocknote/core/types/src/i18n/locales";
+import { ko } from "@blocknote/core/locales";
 
 interface Props {
   props: Block[];

@@ -53,11 +53,11 @@ function AppFooter() {
               <p className="h-10 text-base font-semibold">고객센터</p>
               <div className="flex flex-col items-start gap-1">
                 <p>평일 오전 9시 ~ 오후 6시</p>
-                <p>문의 : mingoteam@naver.com</p>
+                <p>문의 : kok030224@gmail.com</p>
               </div>
             </div>
 
-            <p>@ Mingo Team all right reserved</p>
+            <p>@googy Team all right reserved</p>
           </div>
 
           {/* 사업자 정보 */}
@@ -65,11 +65,7 @@ function AppFooter() {
             <div className="flex flex-col">
               <p className="h-10 text-base font-semibold">사업자 정보</p>
               <div className="flex flex-col items-start gap-1">
-                <p>대표이사 : 개발자 googy</p>
-                <p>사업자 번호 : 012-34-56789</p>
-                <p>통신판매신고번호: 2026-대한민국-0123</p>
-                <p>주소 : 서울 특별시 강남구 강남대로 12길 34</p>
-                <p>대표번호 : 012-3456-7890</p>
+                <p>개발자: googy</p>
               </div>
             </div>
           </div>

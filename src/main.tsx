@@ -14,6 +14,7 @@ import TopicDetail from "./pages/topics/[topic_id]/detail.tsx"; // 토픽 생성
 
 import "./index.css";
 import Portfolio from "./pages/portfolio/index.tsx";
+import PaperHanger from "./pages/paper-hanger/index.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -28,6 +29,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="topics/:id/create" element={<CreacTopic />} />
             <Route path="topics/:id/detail" element={<TopicDetail />} />
             <Route path="portfolio" element={<Portfolio />} />
+            <Route path="paper-hanger" element={<PaperHanger />} />
           </Route>
         </Routes>
       </BrowserRouter>

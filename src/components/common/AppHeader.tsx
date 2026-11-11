@@ -40,6 +40,12 @@ function AppHeader() {
             <NavLink to={"/portfolio"} className="font-semibold cursor-pointer">
               포트폴리오
             </NavLink>
+            <NavLink
+              to={"/paper-hanger"}
+              className="font-semibold cursor-pointer"
+            >
+              도배하는 개발자(소개)
+            </NavLink>
           </div>
         </div>
 

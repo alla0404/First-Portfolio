@@ -1,8 +1,8 @@
 import { useNavigate, useSearchParams } from "react-router";
 import { useAuthStore } from "@/stores";
-import { AppDraftsDialog, AppSidebar } from "../components/common";
-import { SkeletonHotTopic } from "../components/skeleton";
-import { Button } from "../components/ui";
+import { AppDraftsDialog, AppSidebar } from "../../components/common";
+import { SkeletonHotTopic } from "../../components/skeleton";
+import { Button } from "../../components/ui";
 import { CircleSmall, NotebookPen, PencilLine } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/lib/supabase";

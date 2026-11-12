@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { ThemeProvider } from "./components/common/theme-provider.tsx";
 import { Toaster } from "./components/ui/sonner.tsx";
 
-import App from "./pages"; // 메인 페이지
+import App from "./pages/insight"; // 메인 페이지
 import SignIn from "./pages/sign-in"; // 로그인 페이지
 import Authcallback from "./pages/auth/callback.tsx"; // 쇼셜 로그인 시, 콜백 페이지
 import SignUp from "./pages/sign-up"; // 회원가입 페이지

@@ -33,18 +33,17 @@ function AppHeader() {
             className="w-6 h-6 cursor-pointer"
           />
           <div className="flex items-center gap-5">
-            <NavLink to={"/"} className="font-semibold  cursor-pointer">
-              토픽 인사이트
-            </NavLink>
-            <Separator orientation="vertical" className="h-4!" />
-            <NavLink to={"/portfolio"} className="font-semibold cursor-pointer">
+            <NavLink to={"/"} className="font-semibold cursor-pointer">
               포트폴리오
             </NavLink>
             <NavLink
               to={"/paper-hanger"}
-              className="font-semibold cursor-pointer"
+              className="font-semibold  cursor-pointer"
             >
-              도배하는 개발자(소개)
+              도배하는 개발자 (소개)
+            </NavLink>
+            <NavLink to={"/insight"} className="font-semibold  cursor-pointer">
+              토픽 인사이트
             </NavLink>
           </div>
         </div>

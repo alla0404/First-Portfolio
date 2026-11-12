@@ -22,14 +22,14 @@ createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <Routes>
           <Route element={<Rootlayout />}>
-            <Route index element={<App />} />
+            <Route index element={<Portfolio />} />
             <Route path="sign-in" element={<SignIn />} />
             <Route path="auth/callback" element={<Authcallback />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="topics/:id/create" element={<CreacTopic />} />
             <Route path="topics/:id/detail" element={<TopicDetail />} />
-            <Route path="portfolio" element={<Portfolio />} />
             <Route path="paper-hanger" element={<PaperHanger />} />
+            <Route path="insight" element={<App />} />
           </Route>
         </Routes>
       </BrowserRouter>

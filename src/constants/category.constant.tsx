@@ -1,58 +1,39 @@
 import {
-  ChartNoAxesCombined,
-  CodeXml,
   List,
   Lightbulb,
-  Rocket,
-  Goal,
-  DraftingCompass,
-  Footprints,
+  BriefcaseBusiness,
+  Images,
+  MessageCircle,
 } from "lucide-react";
 
+// 게시글 목록에서 사용하는 카테고리
 export const CLASS_CATEGORY = [
   { id: 1, label: "전체", category: "", icon: <List /> },
-  { id: 2, label: "인문학", category: "humanity", icon: <Lightbulb /> },
-  { id: 3, label: "스타트업", category: "start-up", icon: <Rocket /> },
-  { id: 4, label: "IT•프로그래밍", category: "programming", icon: <CodeXml /> },
-  { id: 5, label: "서비스•전략 기획", category: "planning", icon: <Goal /> },
+  { id: 2, label: "노하우", category: "knowhow", icon: <Lightbulb /> },
   {
-    id: 6,
-    label: "마케팅",
-    category: "marketing",
-    icon: <ChartNoAxesCombined />,
+    id: 3,
+    label: "비즈니스",
+    category: "business",
+    icon: <BriefcaseBusiness />,
   },
   {
-    id: 7,
-    label: "디자인•일러스트",
-    category: "design",
-    icon: <DraftingCompass />,
+    id: 4,
+    label: "포트폴리오",
+    category: "portfolio",
+    icon: <Images />,
   },
   {
-    id: 8,
-    label: "자기개발",
-    category: "self-development",
-    icon: <Footprints />,
+    id: 5,
+    label: "자유소통",
+    category: "community",
+    icon: <MessageCircle />,
   },
 ];
 
+// 게시글 작성 및 수정에서 사용하는 카테고리
 export const Topic_CATEGORY = [
-  { id: 1, label: "인문학", category: "humanity" },
-  { id: 2, label: "스타트업", category: "start-up" },
-  { id: 3, label: "IT•프로그래밍", category: "programming" },
-  { id: 4, label: "서비스•전략 기획", category: "planning" },
-  {
-    id: 5,
-    label: "마케팅",
-    category: "marketing",
-  },
-  {
-    id: 6,
-    label: "디자인•일러스트",
-    category: "design",
-  },
-  {
-    id: 7,
-    label: "자기개발",
-    category: "self-development",
-  },
+  { id: 1, label: "노하우", category: "knowhow" },
+  { id: 2, label: "비즈니스", category: "business" },
+  { id: 3, label: "포트폴리오", category: "portfolio" },
+  { id: 4, label: "자유소통", category: "community" },
 ];

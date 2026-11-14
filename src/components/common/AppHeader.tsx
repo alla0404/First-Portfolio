@@ -28,9 +28,9 @@ function AppHeader() {
         {/* 로고 & 네비게이션 UI */}
         <div className="flex items-center gap-5">
           <img
-            src="https://github.com/9diin.png"
-            alt="@LOGO"
-            className="w-6 h-6 cursor-pointer"
+            src="/assets/images/googy.png"
+            alt="@googy"
+            className="w-13 h-13 cursor-pointer"
           />
           <div className="flex items-center gap-5">
             <NavLink to={"/"} className="font-semibold cursor-pointer">

@@ -8,14 +8,14 @@ function AppFooter() {
           <div className="flex flex-col items-start gap-4">
             <div className="flex flex-col items-start">
               <h3 className="scroll-m-20 text-base md:text-2xl font-semibold tracking-tight">
-                나의 학습 여정이,
+                현장의 경험을 바탕으로,
               </h3>
               <h3 className="scroll-m-20 text-base md:text-2xl font-semibold tracking-tight">
-                나만의 창작으로 이어지는 플랫폼
+                고객과 인테리어 전문가를 연결하는 플랫폼을 만들엉 갑니다.
               </h3>
             </div>
             <div className="flex items-center gap-2">
-              <Button variant={"outline"} size={"icon"} className="border-0">
+              {/* <Button variant={"outline"} size={"icon"} className="border-0">
                 <img
                   src="/assets/icons/icon-001.svg"
                   alt="@Sns"
@@ -28,7 +28,7 @@ function AppFooter() {
                   alt="@Sns"
                   className="w-5.5 h-5.5"
                 />
-              </Button>
+              </Button> */}
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -57,18 +57,18 @@ function AppFooter() {
               </div>
             </div>
 
-            <p>@googy Team all right reserved</p>
+            <p>© googy all right reserved</p>
           </div>
 
           {/* 사업자 정보 */}
-          <div className="flex flex-col h-40 justify-between mr-16.5">
+          {/* <div className="flex flex-col h-40 justify-between mr-16.5">
             <div className="flex flex-col">
               <p className="h-10 text-base font-semibold">사업자 정보</p>
               <div className="flex flex-col items-start gap-1">
                 <p>개발자: googy</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

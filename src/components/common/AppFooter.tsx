@@ -11,7 +11,7 @@ function AppFooter() {
                 현장의 경험을 바탕으로,
               </h3>
               <h3 className="scroll-m-20 text-base md:text-2xl font-semibold tracking-tight">
-                고객과 인테리어 전문가를 연결하는 플랫폼을 만들엉 갑니다.
+                고객과 인테리어 전문가를 연결하는 플랫폼을 만들어 갑니다.
               </h3>
             </div>
             <div className="flex items-center gap-2">

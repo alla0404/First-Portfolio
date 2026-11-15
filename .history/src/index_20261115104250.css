@@ -120,9 +120,18 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-sm;
   }
   html {
     @apply font-sans;
@@ -131,7 +140,7 @@
 
 .page {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -143,8 +152,12 @@
     width: 100%;
     max-width: 1328px;
 
-    padding-top: 48px;
+    /* padding-top: 48px; */
 
     flex: 1;
   }
+}
+
+.bn-editor {
+  background-color: transparant !important;
 }

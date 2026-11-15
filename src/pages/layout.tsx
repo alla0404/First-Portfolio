@@ -7,7 +7,7 @@ export default function Rootlayout() {
   return (
     <div className="page">
       <AppHeader />
-      <div className="container">
+      <div className="container pt-28 md:pt-20">
         <Outlet />
       </div>
       <AppFooter />

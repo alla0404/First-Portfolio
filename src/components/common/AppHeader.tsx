@@ -34,7 +34,7 @@ function AppHeader() {
         "
       >
         {/* 로고 + PC 네비게이션 + 로그인 UI */}
-        <div className="flex min-w-0 items-center justify-between gap-4">
+        <div className="flex w-full min-w-0 items-center justify-between gap-4">
           {/* 로고 */}
           <img
             src="/assets/images/googy.png"

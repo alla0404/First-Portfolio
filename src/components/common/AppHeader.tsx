@@ -26,7 +26,7 @@ function AppHeader() {
     <header className="fixed top-0 inset-x-0 z-20 bg-[#121212]">
       <div
         className="
-          w-full max-w-332 mx-auto
+          w-full mx-auto
           flex flex-col gap-3
           px-4 py-3
           sm:px-6

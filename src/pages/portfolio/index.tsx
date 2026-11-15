@@ -44,7 +44,7 @@ export default function Portfolio() {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto px-8 py-10">
+      <div className="mx-auto px-8 py-10">
         <h1 className="text-5xl font-bold mb-3">도배하는 개발자</h1>
 
         <p className="text-muted-foreground mb-10">

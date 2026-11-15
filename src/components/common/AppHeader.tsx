@@ -54,7 +54,7 @@ function AppHeader() {
             </NavLink>
 
             <NavLink to="/insight" className="font-semibold">
-              토픽 인사이트
+              이야기
             </NavLink>
           </nav>
 

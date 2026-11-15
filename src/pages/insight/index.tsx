@@ -1,7 +1,6 @@
 import { useNavigate, useSearchParams } from "react-router";
 import { useAuthStore } from "@/stores";
 import { AppDraftsDialog, AppSidebar } from "../../components/common";
-import { SkeletonHotTopic } from "../../components/skeleton";
 import { Button } from "../../components/ui";
 import { CircleSmall, NotebookPen, PencilLine } from "lucide-react";
 import { toast } from "sonner";
@@ -115,31 +114,6 @@ function App() {
       </div>
       {/* 토픽 콘텐츠 */}
       <section className="w-full lg:w-[calc(100%-264px)] flex flex-col gap-12">
-        {/* 핫토픽 */}
-        <div className="w-full flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-2">
-              <img
-                src="/assets/gifs/gif-001.gif"
-                alt="@IMG"
-                className="w-7 h-7"
-              />
-              <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-                HOT 토픽
-              </h4>
-            </div>
-            <p className="md:text-base text-muted-foreground">
-              지금 가장 주목받는 주제들을 살펴보고, 다양한 관점의 인사이트를
-              얻어보세요.
-            </p>
-          </div>
-          <div className="w-full flex items-center gap-6 overflow-auto">
-            <SkeletonHotTopic />
-            <SkeletonHotTopic />
-            <SkeletonHotTopic />
-            <SkeletonHotTopic />
-          </div>
-        </div>
         {/* NEW 토픽 */}
         <div className="w-full flex flex-col gap-6">
           <div className="flex flex-col gap-1">

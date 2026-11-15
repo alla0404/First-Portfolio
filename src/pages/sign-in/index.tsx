@@ -122,7 +122,7 @@ export default function SignIn() {
             onClick={handleGoogleSignIn}
           >
             <img
-              src="/assets/icons/social/smile.jpg"
+              src="/assets/images/google.png"
               alt="@GOOGLE-LOGo"
               className="w-4.5 h-4.5 mr-1"
             />

@@ -50,7 +50,7 @@ function AppHeader() {
             </NavLink>
 
             <NavLink to="/paper-hanger" className="font-semibold">
-              도배하는 개발자 (소개)
+              도배하는 개발자(소개)
             </NavLink>
 
             <NavLink to="/insight" className="font-semibold">

@@ -119,7 +119,7 @@ function App() {
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2">
               <img
-                src="/assets/gifs/writing-hand.gif"
+                src="/assets/icons/Pencil.gif"
                 alt="@IMG"
                 className="w-7 h-7"
               />

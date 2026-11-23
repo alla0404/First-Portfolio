@@ -38,6 +38,10 @@ export default function CreateTopic() {
   const [category, setCategory] = useState<string>("");
   const [thumbnail, setThumbnail] = useState<File | string | null>(null);
 
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   useEffect(() => {
     fetchTopic();
   }, []);
@@ -184,7 +188,12 @@ export default function CreateTopic() {
   return (
     <main className="w-full  h-full min-h-256 flex gap-6 p-6">
       <div className="fixed right-1/2 bottom-10 translate-1/2 z-20 flex items-center">
-        <Button variant={"outline"} size={"icon"}>
+        <Button
+          variant={"outline"}
+          size={"icon"}
+          type="button"
+          onClick={handleGoBack}
+        >
           <ArrowLeft />
         </Button>
         <Button

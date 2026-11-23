@@ -23,7 +23,7 @@ function AppHeader() {
   };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-20 bg-[#121212]">
+    <header className="fixed top-0 inset-x-0 z-20 bg-[#263A2B] text-[#F4F7F1]">
       <div
         className="
           w-full mx-auto

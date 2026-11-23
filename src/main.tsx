@@ -18,7 +18,7 @@ import PaperHanger from "./pages/paper-hanger/index.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="theme-green" storageKey="vite-ui-theme">
       <BrowserRouter>
         <Routes>
           <Route element={<Rootlayout />}>

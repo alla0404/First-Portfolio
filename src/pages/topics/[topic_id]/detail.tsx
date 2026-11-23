@@ -29,6 +29,7 @@ export default function TopicDetail() {
   const [title, setTitle] = useState<string>("");
   const [thumbnail, setThumbnail] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [createdAt, setCreatedAt] = useState<string>("");
 
   const fetchTopic = async () => {
     try {
@@ -48,6 +49,8 @@ export default function TopicDetail() {
         setTitle(topic[0].title);
         setThumbnail(topic[0].thumbnail);
         setContent(topic[0].content);
+        // 실제 작성 날짜 가져오기
+        setCreatedAt(topic[0].created_at);
       }
     } catch (error) {
       console.log(error);
@@ -75,16 +78,23 @@ export default function TopicDetail() {
   }, [id]);
   return (
     <main className="w-full h-full min-h-180 flex flex-col">
+      {/* 사진 + 제목 + 날짜 */}
       <div
-        className="relative w-full h-60 md:h-100 bg-cover bg-position-[50%_35%] bg-accent"
+        className="relative w-full h-60 md:h-100 bg-cover bg-center bg-no-repeat bg-accent"
         style={{ backgroundImage: `url(${thumbnail})` }}
       >
+        {/* 사진을 살짝 어둡게 처리하여 글씨가 잘 보이도록 설정 */}
+        <div className="absolute inset-0 bg-black/30" />
+
+        {/* 하단 그라데이션 */}
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+
         {/* 뒤로가기 버튼 */}
-        <div className="absolute top-6 left-6 z-10 flex items-center gap-2">
+        <div className="absolute top-6 left-6 z-20 flex items-center gap-2">
           <Button variant="outline" size="icon" onClick={() => navigate("/")}>
             <ArrowLeft />
           </Button>
-          {/* 토픽을 작성한 사람의 user_id와 로그인한 사람의 user_id가 같은 경우에만 보이도록 하낟. */}
+
           {author === user?.id && (
             <AlertDialog>
               <AlertDialogTrigger>
@@ -96,6 +106,7 @@ export default function TopicDetail() {
                   <Trash2 />
                 </Button>
               </AlertDialogTrigger>
+
               <AlertDialogContent>
                 <AlertDialogHeader>
                   <AlertDialogTitle>
@@ -106,6 +117,7 @@ export default function TopicDetail() {
                     복구할 수 없습니다.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
+
                 <AlertDialogFooter>
                   <AlertDialogCancel>닫기</AlertDialogCancel>
                   <AlertDialogAction
@@ -119,19 +131,30 @@ export default function TopicDetail() {
             </AlertDialog>
           )}
         </div>
-        {/* 좌, 우, 하단 그라데이션 */}
-        <div className="absolute inset-0 bg-linear-to-r from-[#0a0a0a] via-transparent to-transparent "></div>
-        <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-transparent to-transparent "></div>
-        <div className="absolute inset-0 bg-linear-to-l from-[#0a0a0a] via-transparent to-transparent "></div>
+
+        {/* 사진 위에 제목과 날짜 표시 */}
+        <section className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white px-4">
+          <span className="mb-4 text-sm font-medium text-white">
+            # {category}
+          </span>
+
+          <h1 className="text-center font-extrabold tracking-tight text-2xl md:text-4xl text-white">
+            {title}
+          </h1>
+
+          <Separator className="w-6! my-6 bg-white" />
+
+          <span className="text-sm text-white">
+            {createdAt &&
+              new Date(createdAt).toLocaleDateString("ko-KR", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+              })}
+          </span>
+        </section>
       </div>
-      <section className="relative w-full flex flex-col items-center -mt-40">
-        <span className="mb-4"># {category}</span>
-        <h1 className="scroll-m-20 text-center font-extrabold tracking-tight sm:text-2xl md:text-4xl">
-          {title}
-        </h1>
-        <Separator className="w-6! my-6 bg-foreground" />
-        <span>2026. 11. 06</span>
-      </section>
+
       {/* 에디터 내용을 불러와 렌더링 */}
       <div className="w-full py-6">
         {content && <AppEditor props={JSON.parse(content)} readonly />}

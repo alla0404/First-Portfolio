@@ -39,7 +39,11 @@ export default function CreateTopic() {
   const [thumbnail, setThumbnail] = useState<File | string | null>(null);
 
   const handleGoBack = () => {
-    navigate(-1);
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("insight");
+    }
   };
 
   useEffect(() => {

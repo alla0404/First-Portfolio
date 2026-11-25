@@ -117,6 +117,38 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+.theme-green {
+  --background: oklch(0.94 0.03 130);
+  --foreground: oklch(0.25 0.03 135);
+
+  --card: oklch(0.98 0.02 130);
+  --card-foreground: oklch(0.25 0.03 135);
+
+  --popover: oklch(0.98 0.02 130);
+  --popover-foreground: oklch(0.25 0.03 135);
+
+  --primary: oklch(0.65 0.12 135);
+  --primary-foreground: oklch(0.98 0 0);
+
+  --secondary: oklch(0.88 0.04 130);
+  --secondary-foreground: oklch(0.25 0.03 135);
+
+  --muted: oklch(0.9 0.03 130);
+  --muted-foreground: oklch(0.45 0.03 135);
+
+  --accent: oklch(0.78 0.08 130);
+  --accent-foreground: oklch(0.2 0.03 135);
+
+  --border: oklch(0.82 0.03 130);
+  --input: oklch(0.82 0.03 130);
+  --ring: oklch(0.65 0.12 135);
+
+  --sidebar: oklch(0.92 0.03 130);
+  --sidebar-foreground: oklch(0.25 0.03 135);
+  --sidebar-primary: oklch(0.65 0.12 135);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -150,14 +182,11 @@
 
   .container {
     width: 100%;
-    max-width: 1328px;
-
-    padding-top: 48px;
-
+    /* padding-top: 48px; */
     flex: 1;
   }
 }
 
 .bn-editor {
-  background-color: transparant !important;
+  background-color: transparent !important;
 }

@@ -26,6 +26,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="sign-in" element={<SignIn />} />
             <Route path="auth/callback" element={<Authcallback />} />
             <Route path="sign-up" element={<SignUp />} />
+            <Route path="topics/create" element={<CreacTopic />} />
             <Route path="topics/:id/create" element={<CreacTopic />} />
             <Route path="topics/:id/detail" element={<TopicDetail />} />
             <Route path="paper-hanger" element={<PaperHanger />} />

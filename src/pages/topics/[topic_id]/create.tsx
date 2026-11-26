@@ -47,8 +47,10 @@ export default function CreateTopic() {
   };
 
   useEffect(() => {
-    fetchTopic();
-  }, []);
+    if (id) {
+      fetchTopic();
+    }
+  }, [id]);
 
   const fetchTopic = async () => {
     try {
@@ -76,116 +78,128 @@ export default function CreateTopic() {
   };
 
   const handleSave = async () => {
-    if (!title && !content && !category && !thumbnail) {
-      toast.warning("제목, 본문, 카테고리, 썸네일을 기입하세요.");
+    if (!user?.id) {
+      toast.warning("로그인이 필요합니다.");
       return;
     }
 
-    // 1. 파일 업로드 시, Supabase의 Storage 즉, bucket 폴더에 이미지를 먼저 upload 한후
-    // 이미지가 저장된 bucket 폴더의 경로 URL 주소를 우리가 관리하고 있는 Topic 테이블 thumbnail 컬럼에 문다열 형태
-    // 즉, string 타입 (DB에서는 Text 타입)으로 저장한다.
-    console.log("thumbnail: ", thumbnail);
+    try {
+      let thumbnailUrl: string | null = null;
 
-    let thumbnailUrl: string | null = null;
+      // 썸네일 업로드
+      if (thumbnail instanceof File) {
+        const fileExt = thumbnail.name.split(".").pop();
+        const fileName = `${nanoid()}.${fileExt}`;
+        const filePath = `topics/${fileName}`;
 
-    if (thumbnail && thumbnail instanceof File) {
-      // 썸네일 이미지를 storage에 업로드
-      const fileExt = thumbnail.name.split(".").pop();
-      const fileName = `${nanoid()}.${fileExt}`;
-      const filePath = `topics/${fileName}`;
+        const { error: uploadError } = await supabase.storage
+          .from("files")
+          .upload(filePath, thumbnail);
 
-      const { error: uploadError } = await supabase.storage
-        .from("files")
-        .upload(filePath, thumbnail);
-      if (uploadError) throw uploadError;
+        if (uploadError) throw uploadError;
 
-      // 업로드된 이미지에 Public URL 값 가져오기
-      const { data } = supabase.storage.from("files").getPublicUrl(filePath);
-      if (!data) throw new Error("썸네일 Public URL 조회를 실패하였습니다.");
-      thumbnailUrl = data.publicUrl;
-    } else if (typeof thumbnail === "string") {
-      // 기존 이미지 유지
-      thumbnailUrl = thumbnail;
-    }
-    const { data, error } = await supabase
-      .from("topic")
-      .update([
-        {
-          title,
-          content: JSON.stringify(content),
-          category,
-          thumbnail: thumbnailUrl,
-          author: user?.id,
-        },
-      ])
-      .eq("id", id)
-      .select();
+        const { data } = supabase.storage.from("files").getPublicUrl(filePath);
+        thumbnailUrl = data.publicUrl;
+      } else if (typeof thumbnail === "string") {
+        thumbnailUrl = thumbnail;
+      }
 
-    if (error) {
-      toast.error(error.message);
-      return;
-    }
+      // 저장할 데이터
+      const topicData = {
+        title,
+        content: JSON.stringify(content),
+        category,
+        thumbnail: thumbnailUrl,
+        author: user.id,
+        status: TOPIC_STATUS.TEMP,
+      };
 
-    if (data) {
-      toast.success("작성 중인 토픽을 저장하였습니다.");
-      return;
+      // 기존 토픽이면 UPDATE, 새 토픽이면 INSERT
+      if (id) {
+        const { error } = await supabase
+          .from("topic")
+          .update(topicData)
+          .eq("id", id);
+
+        if (error) throw error;
+
+        toast.success("작성 중인 토픽을 저장하였습니다.");
+      } else {
+        const { data, error } = await supabase
+          .from("topic")
+          .insert(topicData)
+          .select("id")
+          .single();
+
+        if (error) throw error;
+
+        toast.success("새 토픽을 임시 저장하였습니다.");
+
+        // 생성된 ID를 주소에 반영
+        navigate(`/topics/${data.id}/create`, { replace: true });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("토픽 저장에 실패하였습니다.");
     }
   };
+
   const handlePublish = async () => {
-    if (!title && !content && !category && !thumbnail) {
-      toast.warning("제목, 본문, 카테고리, 썸네일을 기입하세요.");
+    if (!user?.id) {
+      toast.warning("로그인이 필요합니다.");
       return;
     }
 
-    // 1. 파일 업로드 시, Supabase의 Storage 즉, bucket 폴더에 이미지를 먼저 upload 한후
-    // 이미지가 저장된 bucket 폴더의 경로 URL 주소를 우리가 관리하고 있는 Topic 테이블 thumbnail 컬럼에 문다열 형태
-    // 즉, string 타입 (DB에서는 Text 타입)으로 저장한다.
+    try {
+      let thumbnailUrl: string | null = null;
 
-    let thumbnailUrl: string | null = null;
+      // 썸네일 업로드
+      if (thumbnail instanceof File) {
+        const fileExt = thumbnail.name.split(".").pop();
+        const fileName = `${nanoid()}.${fileExt}`;
+        const filePath = `topics/${fileName}`;
 
-    if (thumbnail && thumbnail instanceof File) {
-      // 썸네일 이미지를 storage에 업로드
-      const fileExt = thumbnail.name.split(".").pop();
-      const fileName = `${nanoid()}.${fileExt}`;
-      const filePath = `topics/${fileName}`;
+        const { error: uploadError } = await supabase.storage
+          .from("files")
+          .upload(filePath, thumbnail);
 
-      const { error: uploadError } = await supabase.storage
-        .from("files")
-        .upload(filePath, thumbnail);
-      if (uploadError) throw uploadError;
+        if (uploadError) throw uploadError;
 
-      // 업로드된 이미지에 Public URL 값 가져오기
-      const { data } = supabase.storage.from("files").getPublicUrl(filePath);
-      if (!data) throw new Error("썸네일 Public URL 조회를 실패하였습니다.");
-      thumbnailUrl = data.publicUrl;
-    } else if (typeof thumbnail === "string") {
-      // 기존 이미지 유지
-      thumbnailUrl = thumbnail;
-    }
-    const { data, error } = await supabase
-      .from("topic")
-      .update([
-        {
-          title,
-          content: JSON.stringify(content),
-          category,
-          thumbnail: thumbnailUrl,
-          author: user?.id,
-          status: TOPIC_STATUS.PUBLISH,
-        },
-      ])
-      .eq("id", id)
-      .select();
+        const { data } = supabase.storage.from("files").getPublicUrl(filePath);
+        thumbnailUrl = data.publicUrl;
+      } else if (typeof thumbnail === "string") {
+        thumbnailUrl = thumbnail;
+      }
 
-    if (error) {
-      toast.error(error.message);
-      return;
-    }
+      // 발행할 데이터
+      const topicData = {
+        title,
+        content: JSON.stringify(content),
+        category,
+        thumbnail: thumbnailUrl,
+        author: user.id,
+        status: TOPIC_STATUS.PUBLISH,
+      };
 
-    if (data) {
+      // 기존 토픽이면 UPDATE, 새 토픽이면 INSERT
+      if (id) {
+        const { error } = await supabase
+          .from("topic")
+          .update(topicData)
+          .eq("id", id);
+
+        if (error) throw error;
+      } else {
+        const { error } = await supabase.from("topic").insert(topicData);
+
+        if (error) throw error;
+      }
+
       toast.success("토픽을 발행하였습니다.");
-      navigate("/");
-      return;
+      navigate("/insight");
+    } catch (error) {
+      console.error(error);
+      toast.error("토픽 발행에 실패하였습니다.");
     }
   };
 

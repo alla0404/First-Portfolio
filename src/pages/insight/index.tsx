@@ -52,35 +52,15 @@ function App() {
   };
 
   // 나만의 토픽 생성 버튼 클릭 시
-  const handleRoute = async () => {
+  // 나만의 토픽 작성 버튼 클릭 시
+  const handleRoute = () => {
     if (!user) {
-      toast.warning("토픽 작성은 로그인후 가능합니다.");
+      toast.warning("토픽 작성은 로그인 후 가능합니다.");
       return;
     }
 
-    const { data, error } = await supabase
-      .from("topic")
-      .insert([
-        {
-          status: null,
-          title: null,
-          content: null,
-          category: null,
-          thumbnail: null,
-          author: user.id,
-        },
-      ])
-      .select();
-
-    if (error) {
-      toast.error(error.message);
-      return;
-    }
-
-    if (data) {
-      toast.success("토픽을 생성하였습니다.");
-      navigate(`/topics/${data[0].id}/create`);
-    }
+    // DB에 저장하지 않고 작성 화면으로만 이동
+    navigate("/topics/create");
   };
 
   useEffect(() => {
